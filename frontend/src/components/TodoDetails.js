@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import deleteIcon from "../assets/delete.svg";
 const colors = [
   "ffc6efee",
   "ffe2e4ee",
@@ -18,7 +19,6 @@ const TodoDetails = ({ todo }) => {
 
   return (
     <div
-      onClick={handleClick}
       className="single-todo"
       style={{
         backgroundColor: `#${
@@ -29,6 +29,12 @@ const TodoDetails = ({ todo }) => {
       <p>{todo.text}</p>
       <p>{todo.createdAt}</p>
       <p className="pin"></p>
+      <img
+        onClick={handleClick}
+        src={deleteIcon}
+        className="delete-icon"
+        alt="trashcan"
+      />
     </div>
   );
 };

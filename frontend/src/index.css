@@ -50,6 +50,9 @@ html {
   transition: transform 0.3s ease;
   position: relative;
   box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .single-todo:hover {
   transform: rotate(0deg);
@@ -64,4 +67,21 @@ html {
   position: absolute;
   top: -20px;
   left: -5px;
+}
+.delete-icon {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  display: none;
+}
+.single-todo:hover .delete-icon {
+  display: inline-block;
+  filter: invert(50%);
+}
+.single-todo:hover .delete-icon:hover {
+  display: inline-block;
+  filter: invert(0%);
+  cursor: pointer;
 }
