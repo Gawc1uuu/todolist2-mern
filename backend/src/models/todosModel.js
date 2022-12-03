@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const todo = new Schema(
+const todoSchema = new Schema(
   {
     text: {
       type: String,
@@ -14,3 +14,5 @@ const todo = new Schema(
   },
   { timestamps: true }
 );
+
+module.exports = mongoose.model("Todo", todoSchema);
