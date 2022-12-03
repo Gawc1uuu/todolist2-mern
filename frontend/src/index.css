@@ -71,9 +71,9 @@ html {
 .delete-icon {
   position: absolute;
   top: 5px;
-  right: 0;
-  width: 2rem;
-  height: 2rem;
+  right: 5px;
+  width: 1.5rem;
+  height: 1.6rem;
   display: none;
 }
 .single-todo:hover .delete-icon {

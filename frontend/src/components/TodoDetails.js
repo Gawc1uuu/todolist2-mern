@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import deleteIcon from "../assets/delete.svg";
+import useTodosContext from "../hooks/useTodosContext";
 const colors = [
   "ffc6efee",
   "ffe2e4ee",
@@ -12,9 +13,10 @@ const colors = [
 ];
 
 const TodoDetails = ({ todo }) => {
-  const handleClick = (e) => {
-    const response = axios.delete("/api/todos/" + todo._id);
-    console.log(response);
+  const { dispatch } = useTodosContext();
+  const handleClick = async (e) => {
+    const response = await axios.delete("/api/todos/" + todo._id);
+    dispatch({ type: "DELETE_TODO", payload: response.data._id });
   };
 
   return (

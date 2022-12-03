@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import TodosForm from "../components/TodosForm";
 import TodoDetails from "../components/TodoDetails";
+import useTodosContext from "../hooks/useTodosContext";
 
 const Home = () => {
-  const [todos, setTodos] = useState(null);
+  const { todos, dispatch } = useTodosContext();
 
   useEffect(() => {
     const getTodos = async () => {
       const response = await axios.get("/api/todos");
-      setTodos(response.data);
+      dispatch({ type: "SET_TODOS", payload: response.data });
     };
     getTodos();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="main-container">

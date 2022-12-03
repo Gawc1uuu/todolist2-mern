@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import useTodosContext from "../hooks/useTodosContext";
 
 const TodosForm = () => {
+  const { dispatch } = useTodosContext();
   const [text, setText] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newTodo = { text };
+
     const response = await axios.post("/api/todos", { text });
 
-    console.log(response.data);
+    dispatch({ type: "ADD_TODO", payload: response.data });
     setText("");
   };
 
