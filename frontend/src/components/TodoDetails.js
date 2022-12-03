@@ -1,17 +1,24 @@
 import React from "react";
+import axios from "axios";
 const colors = [
-  "ffc6ef95",
-  "ffe2e495",
-  "ffd6da95",
-  "fff4dc95",
-  "dffff195",
-  "d3f4ff95",
-  "eee1ff95",
+  "ffc6efee",
+  "ffe2e4ee",
+  "ffd6daee",
+  "fff4dcee",
+  "dffff1ee",
+  "d3f4ffee",
+  "eee1ffee",
 ];
 
 const TodoDetails = ({ todo }) => {
+  const handleClick = (e) => {
+    const response = axios.delete("/api/todos/" + todo._id);
+    console.log(response);
+  };
+
   return (
     <div
+      onClick={handleClick}
       className="single-todo"
       style={{
         backgroundColor: `#${
@@ -21,6 +28,7 @@ const TodoDetails = ({ todo }) => {
     >
       <p>{todo.text}</p>
       <p>{todo.createdAt}</p>
+      <p className="pin"></p>
     </div>
   );
 };

@@ -15,7 +15,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="mian-container">
+    <div className="main-container">
       <div className="form-container">
         <TodosForm />
       </div>
