@@ -14,9 +14,11 @@ async function main() {
 }
 //importing router
 const todosRouter = require("./routes/todosRoutes");
+const usersRouter = require("./routes/userRoutes");
 
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //routing
 app.use("/api/todos", todosRouter);
+app.use("/api/users", usersRouter);
