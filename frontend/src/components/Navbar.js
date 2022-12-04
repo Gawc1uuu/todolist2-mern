@@ -6,8 +6,8 @@ const Navbar = () => {
     <div className="navbar">
       <nav>
         <Link>Logout</Link>
-        <Link>Sign up</Link>
-        <Link>Login</Link>
+        <Link to="/signup">Sign up</Link>
+        <Link to="/login">Login</Link>
       </nav>
     </div>
   );

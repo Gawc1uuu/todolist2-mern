@@ -23,6 +23,9 @@ html {
   background-size: cover;
   font-family: "Poppins", sans-serif;
 }
+.App {
+  min-height: 100%;
+}
 .main-container {
   min-height: 100%;
 }
@@ -130,4 +133,26 @@ a {
   text-decoration: none;
   color: black;
   font-weight: 500;
+}
+.signup {
+  border-radius: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 30%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 50px;
+  min-width: 300px;
+  margin-top: 7%;
+}
+.signup label {
+  display: block;
+}
+.signup input {
+  display: block;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
 }
