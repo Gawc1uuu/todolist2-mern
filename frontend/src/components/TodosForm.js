@@ -17,6 +17,7 @@ const TodosForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="what you have TODO?"

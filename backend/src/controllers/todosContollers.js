@@ -2,8 +2,15 @@ const mongoose = require("mongoose");
 const Todo = require("../models/todosModel");
 
 const getAllTodos = async (req, res) => {
+  const start = new Date();
+  start.setHours(0, 0, 0, 0);
+
+  const end = new Date();
+  end.setHours(23, 59, 59, 999);
   try {
-    const todos = await Todo.find();
+    const todos = await Todo.find({
+      createdAt: { $gte: start, $lt: end },
+    }).sort({ createdAt: 1 });
     return res.status(200).json(todos);
   } catch (err) {
     return res.status(400).json({ err: "Cannot load todos" });
