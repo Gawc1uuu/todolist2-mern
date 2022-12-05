@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
-import useAuthContext from "../hooks/useAuthContext";
 import useSignup from "../hooks/useSignup";
 
 const Signup = () => {
