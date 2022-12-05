@@ -1,7 +1,7 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 
-const createToken = async (_id) => {
+const createToken = (_id) => {
   const token = jwt.sign({ _id }, "secret", { expiresIn: "1h" });
   return token;
 };
@@ -12,15 +12,23 @@ const signupController = async (req, res) => {
 
   try {
     const user = await User.signup(email, password);
-    const token = await createToken(user._id);
-    return res.status(200).json({ email, token: token });
+    const token = createToken(user._id);
+    return res.status(200).json({ email, token });
   } catch (err) {
     return res.status(401).json({ error: err.message });
   }
 };
 
-const login = (req, res) => {
-  res.status(200).json({ msg: "LOGIN A USER" });
+const loginContoller = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.login(email, password);
+    const token = createToken(user._id);
+    return res.status(401).json({ email, token });
+  } catch (error) {
+    return res.status(401).json({ error: error.message });
+  }
 };
 
-module.exports = { signupController, login };
+module.exports = { signupController, loginContoller };
