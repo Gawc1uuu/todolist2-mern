@@ -1,12 +1,16 @@
 import React, { useState } from "react";
+import axios from "axios";
+import useAuthContext from "../hooks/useAuthContext";
+import useSignup from "../hooks/useSignup";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { signup, error, isLoading } = useSignup();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    await signup(email, password);
   };
 
   return (
@@ -25,7 +29,8 @@ const Signup = () => {
           value={password}
           type="password"
         />
-        <button>Sign up</button>
+        <button disabled={isLoading}>Sign up</button>
+        {error && <p className="error">{error}</p>}
       </form>
     </div>
   );
