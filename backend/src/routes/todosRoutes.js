@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { authMiddleware } = require("../middleware/authMiddleware");
 const {
   getAllTodos,
   getSignleTodo,
@@ -7,6 +8,8 @@ const {
   deleteTodo,
   editTodo,
 } = require("../controllers/todosContollers");
+
+router.use(authMiddleware);
 
 router.get("/", getAllTodos);
 

@@ -3,6 +3,7 @@ import axios from "axios";
 import deleteIcon from "../assets/delete.svg";
 import useTodosContext from "../hooks/useTodosContext";
 import { format } from "date-fns";
+import useAuthContext from "../hooks/useAuthContext";
 const colors = [
   "ffc6efee",
   "ffe2e4ee",
@@ -14,9 +15,14 @@ const colors = [
 ];
 
 const TodoDetails = ({ todo }) => {
+  const { user } = useAuthContext();
   const { dispatch } = useTodosContext();
   const handleClick = async (e) => {
-    const response = await axios.delete("/api/todos/" + todo._id);
+    const response = await axios.delete("/api/todos/" + todo._id, {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
     dispatch({ type: "DELETE_TODO", payload: response.data._id });
   };
 
