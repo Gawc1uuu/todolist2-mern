@@ -8,6 +8,7 @@ const useLogout = () => {
   const logout = () => {
     localStorage.removeItem("user");
     dispatch({ type: "LOGOUT" });
+    dispatchTodos({ type: "SET_TODOS", payload: null });
   };
   return { logout };
 };

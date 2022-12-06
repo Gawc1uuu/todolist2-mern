@@ -8,6 +8,7 @@ const getAllTodos = async (req, res) => {
   const end = new Date();
   end.setHours(23, 59, 59, 999);
   try {
+    const deletedTodos = await Todo.deleteMany({ createdAt: { $lt: start } });
     const todos = await Todo.find({
       createdAt: { $gte: start, $lt: end },
     }).sort({ createdAt: 1 });

@@ -13,7 +13,6 @@ const todosReducer = (state, action) => {
         todos: state.todos.filter((todo) => todo._id !== action.payload),
       };
     case "ADD_TODO":
-      console.log(state.todos);
       return {
         todos: [...state.todos, action.payload],
       };
